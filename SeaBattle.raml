@@ -1,0 +1,44 @@
+#%RAML 1.0
+title: SeaBattle
+version: v1
+baseUri: http://localhost:8000
+/startGame:
+  displayName: kek
+  get:
+    description: Старт игры и инициализация нужных данных
+    
+/getUserJSONMap:
+ get:
+   description: Возвращает координаты карты игрока в формате JSON
+   responses: 
+    200:
+      body:
+        application/json:
+          example: |
+            [{"x":5,"y":0,"value":1},{"x":3,"y":0,"value":1}]
+/getBotJSONMap:
+ get:
+   description: Возвращает координаты карты бота в формате JSON
+   responses: 
+    200:
+      body:
+        application/json:
+          example: |
+            [{"x":5,"y":0,"value":1},{"x":3,"y":0,"value":1}]
+/makeShotUser:
+  put:
+    description: Совершает ход игрока, ответом будет x,y, результат выстрела и сообщение информирующее о том чей ход должен быть следующим
+    queryParameters: 
+      x?: integer
+      y?: integer
+/makeShotBot:
+  put:
+    description: Совершает ход бота, ответом будет x,y, результат выстрела и сообщение информирующее о том чей ход должен быть следующим
+/printUserField:
+  get:
+    description: Совершает вывод поля игрока на экран
+  
+/printBotrField:
+  get:
+    description: Совершает вывод поля бота на экран   
+        
